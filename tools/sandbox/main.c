@@ -27,6 +27,18 @@
 // required capabilities.
 int lo_up() {
     const int sock = socket(AF_INET6, SOCK_DGRAM, 0);
+
+    if( (access( "/proc/net/if_inet6", 0 )) != -1 ){
+        sock = socket(AF_INET6, SOCK_DGRAM, 0);
+    }
+    else {
+        sock = socket(AF_INET, SOCK_DGRAM, 0);
+    }
+
+    if (sock < 0) {
+        perror("socket");
+        return 1;
+    }
     if (sock < 0) {
         perror("socket");
         return 1;
