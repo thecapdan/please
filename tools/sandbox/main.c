@@ -26,7 +26,7 @@
 // Note that this can't be done with system() because it loses the
 // required capabilities.
 int lo_up() {
-    const int sock = socket(AF_INET, SOCK_DGRAM, 0);
+    const int sock = socket(AF_INET6, SOCK_DGRAM, 0);
     if (sock < 0) {
         perror("socket");
         return 1;
